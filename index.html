@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Bridge - TD SYNNEX</title>
+    <link rel="stylesheet" href="knowledge-bridge.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="public/assets/images/TD SYNNEX_Logo_Color_RGB.png" alt="TD SYNNEX Logo" height="40">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="kb-hero">
+        <div class="container">
+            <div class="kb-hero-content">
+                <h1>Knowledge Bridge</h1>
+                <p>Your gateway to comprehensive resources and documentation</p>
+                <div class="search-container">
+                    <input type="text" id="article-search" class="search-input" placeholder="Search documentation...">
+                    <button class="search-button" onclick="performSearch()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+        <div class="container">
+            <ul class="tab-menu">
+                <li class="tab-item">
+                    <a href="https://digitalbridge-uat.tdsynnex.com/digital-bridge-connectors/external/connector/connectorList" class="tab-link">Connector Bridge</a>
+                </li>
+                <li class="tab-item has-dropdown">
+                    <a href="#" class="tab-link">Connectors</a>
+                    <div class="dropdown-menu">
+                        <a href="https://www.tdsynnex.com/na/us/digital-bridge/connectwise-psa" class="dropdown-item">ConnectWise PSA</a>
+                        <a href="https://www.tdsynnex.com/na/us/digital-bridge/ms-apps/" class="dropdown-item">Microsoft Apps</a>
+                    </div>
+                </li>
+                <li class="tab-item has-dropdown">
+                    <a href="#" class="tab-link">Developers</a>
+                    <div class="dropdown-menu">
+                        <a href="index.html" class="dropdown-item">Developer Portal</a>
+                        <a href="#" class="dropdown-item">Submit App</a>
+                    </div>
+                </li>
+                <li class="tab-item">
+                    <a href="index.html" class="tab-link">Knowledge Bridge</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Category Tiles -->
+            <div class="category-grid">
+                <a href="connectwise-psa-kb.html" class="category-tile">
+                    <div class="tile-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 20L22 26L32 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>ConnectWise PSA</h3>
+                    <p>Integration guides, API documentation, and best practices for ConnectWise PSA.</p>
+                    <span class="tile-link">Learn More →</span>
+                </a>
+                
+                <a href="autotask-psa-kb.html" class="category-tile">
+                    <div class="tile-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/>
+                            <path d="M24 16V24L30 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Autotask PSA</h3>
+                    <p>Complete resources for Autotask PSA integration and workflow automation.</p>
+                    <span class="tile-link">Learn More →</span>
+                </a>
+                
+                <a href="servicenow-kb.html" class="category-tile">
+                    <div class="tile-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16H40M8 24H40M8 32H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="36" cy="32" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>ServiceNow</h3>
+                    <p>ServiceNow integration tutorials, configuration guides, and troubleshooting.</p>
+                    <span class="tile-link">Learn More →</span>
+                </a>
+                
+                <a href="microsoft-apps-kb.html" class="category-tile">
+                    <div class="tile-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="8" width="14" height="14" fill="currentColor"/>
+                            <rect x="26" y="8" width="14" height="14" stroke="currentColor" stroke-width="2"/>
+                            <rect x="8" y="26" width="14" height="14" stroke="currentColor" stroke-width="2"/>
+                            <rect x="26" y="26" width="14" height="14" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Microsoft Apps</h3>
+                    <p>Microsoft Teams and Outlook plugin documentation, setup guides, and FAQs.</p>
+                    <span class="tile-link">Learn More →</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Define all articles with their categories and links
+        const allArticles = [
+            // ServiceNow articles
+            { category: 'ServiceNow', title: 'Prerequisites & API Setup', file: 'kb_servicenow_prerequisites_api.md', url: 'servicenow-kb.html' },
+            { category: 'ServiceNow', title: 'Connecting & Activation', file: 'kb_servicenow_connect_activation.md', url: 'servicenow-kb.html' },
+            { category: 'ServiceNow', title: 'Product Sync', file: 'kb_servicenow_template_product_sync.md', url: 'servicenow-kb.html' },
+            { category: 'ServiceNow', title: 'Create Orders from ServiceNow', file: 'kb_servicenow_template_submit_order.md', url: 'servicenow-kb.html' },
+            { category: 'ServiceNow', title: 'Get Order Status', file: 'kb_servicenow_template_order_status.md', url: 'servicenow-kb.html' },
+            { category: 'ServiceNow', title: 'Managing & Troubleshooting', file: 'kb_servicenow_management_troubleshooting.md', url: 'servicenow-kb.html' },
+            
+            // Microsoft Apps articles
+            { category: 'Microsoft Apps', title: 'Prerequisites & Admin Approval', file: 'kb_msapps_prerequisites_admin.md', url: 'microsoft-apps-kb.html' },
+            { category: 'Microsoft Apps', title: 'Admin Deployment', file: 'kb_msapps_admin_deploy.md', url: 'microsoft-apps-kb.html' },
+            { category: 'Microsoft Apps', title: 'User Installation Guide', file: 'kb_msapps_user_install.md', url: 'microsoft-apps-kb.html' },
+            { category: 'Microsoft Apps', title: 'Managing & Troubleshooting', file: 'kb_msapps_management_troubleshooting.md', url: 'microsoft-apps-kb.html' },
+            
+            // ConnectWise articles
+            { category: 'ConnectWise PSA', title: 'Prerequisites & API Setup', file: 'kb_prerequisites_api.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Connecting & Activating', file: 'kb_connect_activation.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Integration Templates', file: 'kb_templates.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Product Sync', file: 'kb_template_products.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Get Product Price & Availability', file: 'kb_template_price_availability.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Create Orders from ConnectWise', file: 'kb_template_create_orders.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Get Order Status', file: 'kb_template_order_status.md', url: 'connectwise-psa-kb.html' },
+            { category: 'ConnectWise PSA', title: 'Managing & Troubleshooting', file: 'kb_management_troubleshooting.md', url: 'connectwise-psa-kb.html' },
+            
+            // Autotask articles
+            { category: 'Autotask PSA', title: 'Prerequisites & API Setup', file: 'kb_autotask_prerequisites_api.md', url: 'autotask-psa-kb.html' },
+            { category: 'Autotask PSA', title: 'Connecting & Activation', file: 'kb_autotask_connect_activation.md', url: 'autotask-psa-kb.html' },
+            { category: 'Autotask PSA', title: 'Product Sync', file: 'kb_autotask_template_product_sync.md', url: 'autotask-psa-kb.html' },
+            { category: 'Autotask PSA', title: 'Create Orders from Autotask', file: 'kb_autotask_template_submit_order.md', url: 'autotask-psa-kb.html' },
+            { category: 'Autotask PSA', title: 'Get Order Status', file: 'kb_autotask_template_order_status.md', url: 'autotask-psa-kb.html' },
+            { category: 'Autotask PSA', title: 'Managing & Troubleshooting', file: 'kb_autotask_management_troubleshooting.md', url: 'autotask-psa-kb.html' }
+        ];
+
+        // Search functionality
+        function performSearch() {
+            const searchInput = document.getElementById('article-search');
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (searchTerm === '') {
+                resultsContainer.classList.remove('active');
+                return;
+            }
+            
+            // Filter articles based on search term
+            const results = allArticles.filter(article => 
+                article.title.toLowerCase().includes(searchTerm) ||
+                article.category.toLowerCase().includes(searchTerm)
+            );
+            
+            // Display results
+            if (results.length > 0) {
+                let html = '';
+                results.forEach(result => {
+                    html += `
+                        <a href="${result.url}?article=${result.file}" class="search-result-item">
+                            <div class="search-result-category">${result.category}</div>
+                            <div class="search-result-title">${result.title}</div>
+                        </a>
+                    `;
+                });
+                resultsContainer.innerHTML = html;
+            } else {
+                resultsContainer.innerHTML = '<div class="search-no-results">No results found</div>';
+            }
+            
+            resultsContainer.classList.add('active');
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('article-search');
+            const resultsContainer = document.getElementById('search-results');
+            
+            // Search on input
+            searchInput.addEventListener('input', performSearch);
+            
+            // Search on Enter key
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Close results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-container')) {
+                    resultsContainer.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html> 

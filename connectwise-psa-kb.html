@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectWise PSA - Knowledge Bridge</title>
+    <link rel="stylesheet" href="knowledge-bridge.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="public/assets/images/TD SYNNEX_Logo_Color_RGB.png" alt="TD SYNNEX Logo" height="40">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="kb-hero">
+        <div class="container">
+            <div class="kb-hero-content">
+                <h1>ConnectWise PSA</h1>
+                <p>Integration guides and documentation for ConnectWise PSA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-navigation">
+        <div class="container">
+            <ul class="tab-menu">
+                <li class="tab-item">
+                    <a href="https://digitalbridge-uat.tdsynnex.com/digital-bridge-connectors/external/connector/connectorList" class="tab-link">Connector Bridge</a>
+                </li>
+                <li class="tab-item has-dropdown">
+                    <a href="#" class="tab-link">Connectors</a>
+                    <div class="dropdown-menu">
+                        <a href="https://www.tdsynnex.com/na/us/digital-bridge/connectwise-psa" class="dropdown-item">ConnectWise PSA</a>
+                        <a href="https://www.tdsynnex.com/na/us/digital-bridge/ms-apps/" class="dropdown-item">Microsoft Apps</a>
+                    </div>
+                </li>
+                <li class="tab-item has-dropdown">
+                    <a href="#" class="tab-link">Developers</a>
+                    <div class="dropdown-menu">
+                        <a href="index.html" class="dropdown-item">Developer Portal</a>
+                        <a href="#" class="dropdown-item">Submit App</a>
+                    </div>
+                </li>
+                <li class="tab-item">
+                    <a href="index.html" class="tab-link">Knowledge Bridge</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Knowledge Bridge</a>
+                <span>›</span>
+                <span>ConnectWise PSA</span>
+            </nav>
+
+            <div class="kb-content">
+                <aside class="kb-sidebar">
+                    <h3>Documentation</h3>
+                    <ul class="kb-nav">
+                        <li><a href="#" data-article="kb_prerequisites_api.md" class="kb-article-link active">Prerequisites & API Setup</a></li>
+                        <li><a href="#" data-article="kb_connect_activation.md" class="kb-article-link">Connecting & Activating</a></li>
+                        <li><a href="#" data-article="kb_templates.md" class="kb-article-link">Integration Templates</a></li>
+                        <li><a href="#" data-article="kb_template_products.md" class="kb-article-link">Product Sync</a></li>
+                        <li><a href="#" data-article="kb_template_price_availability.md" class="kb-article-link">Get Product Price & Availability</a></li>
+                        <li><a href="#" data-article="kb_template_create_orders.md" class="kb-article-link">Create Orders from ConnectWise</a></li>
+                        <li><a href="#" data-article="kb_template_order_status.md" class="kb-article-link">Get Order Status</a></li>
+                        <li><a href="#" data-article="kb_management_troubleshooting.md" class="kb-article-link">Managing & Troubleshooting</a></li>
+                    </ul>
+                </aside>
+
+                <article class="kb-article" id="article-content">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading article...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        .breadcrumb {
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+        
+        .kb-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .kb-sidebar {
+            position: sticky;
+            top: 140px;
+            height: fit-content;
+        }
+        
+        .kb-sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .kb-nav {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .kb-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .kb-nav a {
+            display: block;
+            padding: 8px 12px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .kb-nav a:hover {
+            background: #F0F0F0;
+            color: var(--primary-color);
+        }
+        
+        .kb-nav a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .kb-article {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .kb-article h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .kb-article h3 {
+            font-size: 24px;
+            margin: 30px 0 16px;
+            color: #333;
+        }
+        
+        .kb-article p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 16px;
+        }
+        
+        .kb-article ul, .kb-article ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        .kb-article li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .info-box {
+            background: #F0F8F7;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 4px;
+        }
+        
+        .info-box h4 {
+            margin-bottom: 12px;
+            color: #333;
+        }
+        
+        @media (max-width: 968px) {
+            .kb-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .kb-sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .kb-nav {
+                display: flex;
+                gap: 10px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .kb-nav li {
+                margin: 0;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .kb-article {
+                padding: 24px;
+            }
+            
+            .kb-article h2 {
+                font-size: 24px;
+            }
+            
+            .kb-article h3 {
+                font-size: 20px;
+            }
+        }
+    </style>
+
+    <!-- Add loading spinner styles -->
+    <style>
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .kb-article h1 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+        
+        .kb-article h2 {
+            font-size: 28px;
+            margin: 32px 0 20px;
+            color: #2a2a2a;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        
+        .kb-article h3 {
+            font-size: 22px;
+            margin: 28px 0 16px;
+            color: #333;
+        }
+        
+        .kb-article h4 {
+            font-size: 18px;
+            margin: 24px 0 12px;
+            color: #444;
+            font-weight: 600;
+        }
+        
+        .kb-article p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .kb-article strong {
+            font-weight: 600;
+            color: #2a2a2a;
+        }
+        
+        .kb-article code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .kb-article pre {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .kb-article pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .kb-article blockquote {
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+            padding: 12px 24px;
+            background: #f9f9f9;
+            font-style: italic;
+        }
+        
+        .kb-article table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .kb-article table th,
+        .kb-article table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .kb-article table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .kb-article table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c00;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        /* Image styling for proper display */
+        .kb-article img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            /* Prevent blur by ensuring crisp rendering */
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            /* Limit maximum width for better readability */
+            max-width: 800px;
+        }
+
+        /* For smaller images, don't stretch them */
+        .kb-article img[width] {
+            width: auto !important;
+            max-width: min(100%, 800px);
+        }
+
+        /* Ensure images in tables don't break layout */
+        .kb-article table img {
+            max-width: 200px;
+            margin: 10px auto;
+        }
+    </style>
+
+    <!-- Add JavaScript for markdown loading -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Load and display article
+        async function loadArticle(articlePath) {
+            const articleContent = document.getElementById('article-content');
+            articleContent.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading article...</p></div>';
+            try {
+                const response = await fetch(`connectwise/${articlePath}`);
+                if (!response.ok) {
+                    throw new Error('Article not found');
+                }
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                articleContent.innerHTML = html;
+                articleContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (error) {
+                articleContent.innerHTML = `
+                    <div class="error-message">
+                        <h3>Error Loading Article</h3>
+                        <p>Unable to load the requested article. Please try again later.</p>
+                        <p><small>Error: ${error.message}</small></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Set up event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all article links
+            const articleLinks = document.querySelectorAll('.kb-article-link');
+            
+            // Add click handlers
+            articleLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    articleLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Load the article
+                    const articlePath = this.getAttribute('data-article');
+                    loadArticle(articlePath);
+                });
+            });
+            
+            // Load the first article by default
+            loadArticle('kb_prerequisites_api.md');
+        });
+    </script>
+</body>
+</html> 
