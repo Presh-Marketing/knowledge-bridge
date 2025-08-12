@@ -1,45 +1,176 @@
-### TD SYNNEX Digital Bridge – ConnectWise PSA Connector  
-**Connecting & Activating the Connector**
+# Connecting & Activating the Connector
 
-After preparing your credentials and API member (see Article 1), the next step is to connect and activate the TD SYNNEX connector within the **Connector Bridge** portal.
+## Overview
 
-#### Connecting the app
+After you've prepared your credentials and API member (see [Prerequisites & API Setup](./kb_prerequisites_api.md)), the next step is to connect and activate the TD SYNNEX connector in the Connector Bridge portal.
 
-1. **Access Connector Bridge.** Navigate to TD SYNNEX’s Connector Bridge on the web and locate the **ConnectWise PSA** connector.
-2. **Click Connect.** Press **Connect** to open the connection form.
-3. **Enter credentials.** Provide your **TD SYNNEX EC username/password**, the **ConnectWise domain**, **company ID**, **public key** and **private key** generated for the API member.
-4. **Connect.** Submit the form.  The system validates your credentials and, once authorised, establishes the connection.
+This process has three main steps:
+1. **Connect** - Link your TD SYNNEX and ConnectWise accounts
+2. **Activate** - Let the system set up everything automatically
+3. **Configure Templates** - Choose which features you want to use
 
-During the connection process the system verifies your API permissions; if any required permission is missing, an error message is displayed (see Article 4 for troubleshooting).
+## Step 1: Connecting Your Accounts
 
-To visualise this step, the first screenshot below shows the **ConnectWise PSA Integration Connector** overview page and the **Connect** button.  The second screenshot displays the connection form where you enter your domain, company ID and API keys.
+### Access Connector Bridge
 
-![Connector overview](/public/assets/images/connecting-step1.jpeg)
+1. Log into your TD SYNNEX Digital Bridge portal
+2. Navigate to **Connector Bridge**
+3. Find the **ConnectWise PSA** connector card
+4. Click the **Connect** button
 
-![Connection form](/public/assets/images/connecting-step3.jpeg)
+### Enter Your Connection Information
 
-#### Activation
+You'll see a connection form that asks for several pieces of information. Here's what to enter:
 
-Once the connection succeeds, the integration automatically enters an **activation** phase.  Activation performs several tasks within your ConnectWise tenant:
+**TD SYNNEX Information:**
+- **Username**: Your TD SYNNEX EC username
+- **Password**: Your TD SYNNEX EC password
 
-* **Creates required custom fields** (e.g., Send to TDS) and tables within ConnectWise.
-* **Verifies the API connection** to confirm that all endpoints are reachable.
-* **Configures webhooks** so that ConnectWise sends events (such as “Opportunity updated” or “Purchase order created”) back to the connector.
+**ConnectWise Information:**
+- **Domain**: Your ConnectWise domain (like "yourcompany.connectwiseapps.com")
+- **Company ID**: The Company ID from your ConnectWise system
+- **Public Key**: The public key you generated for your API member
+- **Private Key**: The private key you generated for your API member
 
-You do **not** need to manually create fields or callbacks.  Activation completes when all tasks succeed.
+### Connection Validation
 
-The screenshot below shows the **Sync Activity Log** after activation.  This page confirms that the connection is established and summarises the number of records synced or pending.
+When you click **Connect**, the system will:
+- Test your TD SYNNEX credentials
+- Verify your ConnectWise API connection
+- Check that your API member has all required permissions
+- Confirm that both systems can communicate
 
-![Sync activity log](/public/assets/images/connecting-step4.jpeg)
+If there are any problems, you'll see a specific error message explaining what needs to be fixed.
 
-#### Selecting templates
+## Step 2: Automatic Activation
 
-After activation you must decide which integration templates to enable.  Each template addresses a specific use case such as product synchronisation or order submission.  Enable a template by toggling its switch to **Active**.  A high‑level overview of each template is provided in Article 3.
+Once the connection succeeds, the integration automatically enters an **activation** phase. This is where the magic happens - the system sets up everything you need in ConnectWise PSA without you having to do it manually.
 
-The following screenshot illustrates the **Integration Templates** tab showing the four available templates and their toggle switches.
+### What Gets Created Automatically
 
-![Integration templates overview](/public/assets/images/configure-step5.jpeg)
+During activation, the integration creates:
 
-##### Next steps
+**Company Setup:**
+- A new vendor company named "TD SYNNEX"
+- Proper vendor configuration for purchase orders
 
-With the connector activated, continue to [Article 3: Configuring Integration Templates](./kb_templates.md) to learn how to configure and use each template.
+**Custom Fields:**
+- "Send to TDS" field on purchase orders
+- "TDS Sync Price" field on opportunities
+- Additional tracking fields for order information
+
+**Purchase Order Status Values:**
+- Send to TDS
+- TDS Accepted
+- TDS Released
+- TDS Shipped
+- TDS Invoiced
+- TDS Closed
+
+**Webhook Configuration:**
+- Automatic callbacks for purchase order events
+- Real-time notifications when orders are created or changed
+
+**Product Categories:**
+- Categories based on your TD SYNNEX product subscriptions
+- Subcategories for better organization
+
+### Monitoring Activation Progress
+
+You can watch the activation process in the **Sync Activity Log**. This shows:
+- Which setup tasks have completed
+- Any errors that need attention
+- The number of records being processed
+
+The activation is complete when all setup tasks show as successful.
+
+## Step 3: Template Selection
+
+After activation, you need to decide which integration templates to enable. Each template handles a specific part of the workflow:
+
+### Available Templates
+
+**Product Sync**
+- Syncs up to 20,000 TD SYNNEX products into your ConnectWise catalog
+- Runs daily to keep pricing and availability current
+- Essential for using other templates
+
+**Get Product Price & Availability**
+- Provides real-time pricing when you add products to opportunities
+- Updates automatically when you modify quotes
+- No additional configuration needed
+
+**Create Orders from ConnectWise**
+- Automatically submits purchase orders to TD SYNNEX
+- Runs every 30 minutes to check for new orders
+- Updates ConnectWise with TD SYNNEX order numbers and tracking
+
+**Get Order Status**
+- Monitors TD SYNNEX orders for status changes
+- Updates purchase orders with shipping information
+- Requires the "Send to TDS" field to be set to true
+
+### Enabling Templates
+
+To enable a template:
+1. Go to the **Integration Templates** tab
+2. Find the template you want to use
+3. Toggle the switch to **Active**
+4. The template will start working immediately
+
+## Verification and Testing
+
+### Check Your Setup
+
+After activation, verify everything is working:
+
+1. **Check the TD SYNNEX vendor** - Go to Company → Companies and look for "TD SYNNEX"
+2. **Verify custom fields** - Create a test purchase order and look for the new fields
+3. **Test product sync** - Enable the Product Sync template and check your product catalog
+4. **Review webhooks** - Go to System → Callback Entries to see the new callbacks
+
+### Test the Integration
+
+To test that everything is working:
+
+1. **Create a test opportunity** with TD SYNNEX products
+2. **Set the "TDS Sync Price" field** to "Get TDS Price"
+3. **Wait a few minutes** for the price update
+4. **Check that prices updated** in the opportunity
+
+## Common Issues and Solutions
+
+### Connection Problems
+
+**Error: "Invalid API credentials"**
+- Double-check your public and private keys
+- Verify your Company ID is correct
+- Make sure your API member is active
+
+**Error: "Permission denied"**
+- Review the permissions matrix in the Prerequisites article
+- Ensure your API member has all required permissions
+- Check that the security level includes the necessary modules
+
+### Activation Problems
+
+**Error: "Failed to create custom fields"**
+- Verify your API member has System → Table Setup permissions
+- Check that you're not hitting ConnectWise field limits
+- Contact support if the issue persists
+
+**Error: "Webhook creation failed"**
+- Ensure System → Callback Entries permissions are set
+- Check that your ConnectWise system allows external callbacks
+- Verify your firewall isn't blocking the webhook URLs
+
+## Next Steps
+
+With the connector successfully connected and activated, you're ready to:
+
+1. **Configure your templates** - See [Integration Templates](./kb_templates.md) for detailed setup
+2. **Start syncing products** - Enable Product Sync to populate your catalog
+3. **Test the workflow** - Create a test opportunity and purchase order
+
+The integration is now ready to streamline your TD SYNNEX ordering process!
+

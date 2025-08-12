@@ -1,41 +1,181 @@
-# Template 2 – Create Orders from Autotask (Submit Order)
+# Submit Order Template
 
-The **Create Orders from Autotask** template (often labelled **Submit Order**) automatically converts Autotask purchase orders into TD SYNNEX sales orders.  This automation eliminates re‑keying and accelerates order fulfilment.  You can trigger orders manually or on a recurring schedule.
+## What This Template Does
 
-## Before you start
+The Submit Order template automatically converts your Autotask purchase orders into TD SYNNEX orders. When you create a purchase order in Autotask with TD SYNNEX products, this template handles the submission process automatically.
 
-* Confirm that the **Product Sync** template is enabled and has completed its initial synchronization.  Order submission relies on SKUs existing in Autotask.
-* Ensure that your Autotask users know which opportunities or quotes should be converted into purchase orders.  Only purchase orders (POs) are sent to TD SYNNEX.
-* The API user must have permission to read and update purchase orders and order line items.
+![Autotask Purchase Order Creation](/public/assets/images/autotask-new-purchase-order.png)
 
-## Step 1 – Open the order submission settings
+### Key Features
 
-From the **Integration Templates** tab, locate the **Create Orders from Autotask** tile and click **Learn More** or **Change Settings** (depending on your UI version).  This opens the configuration wizard.
+**Automatic Order Submission**: Converts Autotask purchase orders to TD SYNNEX orders without manual intervention.
 
-### Configure default order options
+**Order Validation**: Checks order details before submission to prevent errors.
 
-On the first page, choose default settings for all outgoing orders:
+**Status Updates**: Updates the Autotask purchase order with TD SYNNEX order numbers and status.
 
-* **Billing & shipping contacts:**  Select which Autotask resource or contact should appear as the billing and shipping contact on TD SYNNEX orders.  You can choose *Use company default* or a specific contact.
-* **Payment terms:**  Choose the default payment terms (for example, *Net 30*).  This should match the terms you have negotiated with TD SYNNEX.
-* **Manual vs. automatic submission:**  Decide whether orders will be sent automatically when a purchase order is created, or if you prefer to review and submit orders manually on a schedule.
+**Error Handling**: Retries failed orders and logs issues for review.
 
-![Configure order submission options](/public/assets/images/submit_order_step1.jpeg)
+## Prerequisites
 
-After configuring these options, click **Next** (or **Save**) to return to the template overview.
+**Product Sync Required**: The Product Sync template must be enabled and running first.
 
-## Step 2 – Enable the template
+**API Permissions**: Your Autotask API user needs full access to Purchase Orders and Purchase Order Line Items.
 
-Once configuration is complete, use the toggle on the **Create Orders from Autotask** tile to turn the template **On**.  When enabled:
+**TD SYNNEX Products**: Orders must contain products that were synced from TD SYNNEX.
 
-1. The connector monitors Autotask for new purchase orders that meet your criteria.
-2. When a PO is detected, it converts the PO into a TD SYNNEX order and sends it to TD SYNNEX automatically or based on your schedule.
-3. You will see the order submission in the **Sync Activity Log** tab along with any errors.
+## How Submit Order Works
 
-## Tips for successful order submission
+### Order Processing Flow
 
-* Only purchase orders in **an approved status** are sent.  Draft or on‑hold POs are ignored.
-* Ensure that all line items on the PO have been successfully synchronized from the product catalogue.  If a SKU has not been synced, the order will fail.
-* If you choose manual submission, a user with the proper permissions must click **Submit** to send the order to TD SYNNEX.  Scheduled submissions can be configured to run daily, weekly or on a custom cadence.
+1. **Order Detection**: The template monitors Autotask for new purchase orders with TD SYNNEX products
+2. **Validation**: Checks that all products are valid TD SYNNEX SKUs with current pricing
+3. **Order Preparation**: Formats the order data according to TD SYNNEX requirements
+4. **Submission**: Sends the order to TD SYNNEX via Digital Bridge APIs
+5. **Confirmation**: Updates the Autotask purchase order with TD SYNNEX order number and status
 
-If you encounter errors, review the log details and verify that the API user has permission to create orders and that your TD SYNNEX account is configured for electronic ordering.
+### What Gets Submitted
+
+**Order Information**:
+- Purchase order number and details
+- Customer billing and shipping information
+- Order date and requested delivery date
+- Special instructions and notes
+
+**Product Details**:
+- TD SYNNEX SKU numbers
+- Quantities ordered
+- Unit prices and extended totals
+- Product descriptions and specifications
+
+**Customer Information**:
+- Company name and contact details
+- Billing address and payment terms
+- Shipping address and delivery instructions
+- Customer purchase order references
+
+## Configuration Steps
+
+### Step 1: Enable the Template
+
+1. **Navigate to Integration Templates**
+   - Go to your Autotask connector in Digital Bridge
+   - Click the **Integration Templates** tab
+
+2. **Configure Submit Order**
+   - Find the **Submit Order** template tile
+   - Click **Change Settings** if configuration is needed
+   - Use the toggle to turn the template **On**
+
+### Step 2: Set Processing Options
+
+**Order Processing Schedule**:
+- **Immediate**: Orders are submitted as soon as they're created
+- **Scheduled**: Orders are processed at specific times
+- **Manual**: Orders are submitted only when manually triggered
+
+**Validation Rules**:
+- **Product Validation**: Ensures all products are valid TD SYNNEX SKUs
+- **Pricing Validation**: Checks that pricing is current and accurate
+- **Customer Validation**: Verifies customer information is complete
+
+**Error Handling**:
+- **Retry Attempts**: Number of times to retry failed orders
+- **Error Notifications**: Who receives alerts about failed orders
+- **Manual Review**: Whether failed orders require manual intervention
+
+## Creating Orders in Autotask
+
+### Order Requirements
+
+**TD SYNNEX Products Only**: The purchase order must contain only products that were synced from TD SYNNEX.
+
+**Complete Information**: All required fields must be filled out, including customer details and shipping information.
+
+**Valid Pricing**: Product prices should match current TD SYNNEX pricing.
+
+**Proper Status**: The purchase order should be in the correct status for submission.
+
+### Order Creation Process
+
+1. **Create New Purchase Order**
+   - Go to **Inventory → Purchase Orders** in Autotask
+   - Click **New** to create a new purchase order
+   - Select TD SYNNEX as the vendor
+
+2. **Add Product Line Items**
+   - Add TD SYNNEX products to the order
+   - Verify quantities and pricing
+   - Include any special instructions
+
+3. **Complete Order Details**
+   - Fill in customer billing and shipping information
+   - Set delivery dates and terms
+   - Add any special instructions or notes
+
+4. **Submit for Processing**
+   - Save the purchase order
+   - The Submit Order template will detect and process it automatically
+
+![Autotask Purchase Order Search](/public/assets/images/autotask-purchase-order-search.png)
+
+## Monitoring Order Submission
+
+### Sync Activity Log
+
+The Sync Activity Log shows:
+- Orders that have been submitted to TD SYNNEX
+- Submission status and results
+- Any errors or warnings
+- Processing times and performance metrics
+
+### Order Status Updates
+
+**Submitted**: Order has been sent to TD SYNNEX successfully.
+
+**Accepted**: TD SYNNEX has received and accepted the order.
+
+**Failed**: Order submission encountered an error.
+
+**Pending**: Order is waiting to be processed.
+
+## Troubleshooting
+
+### Common Issues
+
+**Orders Not Submitting**:
+- Verify products are TD SYNNEX SKUs from Product Sync
+- Check that customer information is complete
+- Ensure API user has proper permissions
+
+**Validation Errors**:
+- Review product SKUs and pricing
+- Check customer address format
+- Verify all required fields are filled
+
+**Network Issues**:
+- Check internet connectivity
+- Verify Digital Bridge connection status
+- Review firewall and security settings
+
+### Best Practices
+
+**Order Preparation**: Always verify order details before saving.
+
+**Product Selection**: Use only products synced from TD SYNNEX.
+
+**Customer Data**: Ensure shipping and billing information is accurate and complete.
+
+**Monitoring**: Regularly check the Sync Activity Log for issues.
+
+## Next Steps
+
+Once Submit Order is working:
+
+1. **Test with Small Orders**: Start with simple orders to verify the process
+2. **Train Your Team**: Show staff how to create orders properly
+3. **Enable Order Status**: Add order tracking capabilities
+4. **Monitor Performance**: Watch for any issues or improvements needed
+
+The Submit Order template automates the ordering process, saving time and reducing errors when purchasing from TD SYNNEX through Autotask PSA.
+
