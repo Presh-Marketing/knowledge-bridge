@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "public": true,
+  "outputDirectory": "public",
+  "buildCommand": "",
+  "framework": null,
+  "github": {
+    "enabled": true,
+    "silent": false,
+    "autoJobCancelation": true
+  }
+}
