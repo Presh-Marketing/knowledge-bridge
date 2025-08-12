@@ -1,7 +1,7 @@
 {
   "version": 2,
   "public": true,
-  "outputDirectory": "public",
+  "outputDirectory": ".",
   "buildCommand": "",
   "framework": null,
   "github": {
